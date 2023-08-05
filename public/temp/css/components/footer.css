@@ -1,0 +1,60 @@
+input[type="radio"] {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #111111;
+  border-radius: 50%;
+  transition: all 0.3s ease; }
+  input[type="radio"]:checked {
+    background: #111111; }
+
+label {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 10px; }
+
+footer {
+  margin-top: 130px; }
+  footer .footer {
+    border-top: 1px solid #B3B3B3;
+    border-bottom: 1px solid #B3B3B3; }
+    footer .footer-list {
+      padding-top: 30px;
+      padding-bottom: 37px; }
+      footer .footer-list .title {
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 20px; }
+      footer .footer-list .list-item {
+        font-size: 16px;
+        line-height: 2.3em; }
+    footer .footer-list:nth-child(2) {
+      border-left: 1px solid #B3B3B3;
+      border-right: 1px solid #B3B3B3; }
+    footer .footer-list:nth-child(2), footer .footer-list:nth-child(3) {
+      padding-left: 30px; }
+  footer .foot-other {
+    margin-top: 90px;
+    font-size: 12px; }
+    footer .foot-other__left {
+      max-width: 383px; }
+      footer .foot-other__left p {
+        line-height: 1.75em; }
+    footer .foot-other__right .connect p {
+      margin-right: 65px; }
+    footer .foot-other__right .connect-icon {
+      padding-top: 5px; }
+      footer .foot-other__right .connect-icon .icon-ytb {
+        margin: 0 4px; }
+    footer .foot-other__right .app {
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-top: 23px; }
+  footer .copyright {
+    font-size: 12px;
+    background: #00ADEE;
+    margin-top: 25px;
+    padding: 34px 0;
+    color: white; }
+
+/*# sourceMappingURL=footer.css.map */
