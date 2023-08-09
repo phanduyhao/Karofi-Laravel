@@ -1,4 +1,3 @@
-<script src="https://www.youtube.com/player_api"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="/temp/libs/jquerry.js"></script>
 <script type="text/javascript" src="/temp/libs/slick-1.8.1/slick/slick.min.js"></script>

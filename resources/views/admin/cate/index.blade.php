@@ -42,11 +42,14 @@
                                                     <td>{{$cate->parent_id}}</td>
                                                 @endif
                                                 <td>
-                                                    @if($cate->active == 1)
-                                                        <input type="checkbox" checked disabled>
-                                                    @else
-                                                        <input type="checkbox" disabled>
-                                                    @endif
+                                                    <label class="checkbox-container">
+                                                        @if($cate->active == 1)
+                                                            <input type="checkbox" checked >
+                                                        @else
+                                                            <input type="checkbox" >
+                                                        @endif
+                                                        <span class="custom-checkbox"></span>
+                                                    </label>
                                                 </td>
                                                 <td>{{$cate->created_at}}</td>
                                                 <td>{{$cate->updated_at}}</td>

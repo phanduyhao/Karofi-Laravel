@@ -57,3 +57,39 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('posts.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Quản lý bài viết
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('locations.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Quản lý địa chỉ
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('banners.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Quản lý banners
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('videos.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Quản lý Video
+                    </p>
+                </a>
+            </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

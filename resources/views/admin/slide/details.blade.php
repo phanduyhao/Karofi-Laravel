@@ -29,11 +29,14 @@
                                                 <td>{{$slide->title}}</td>
                                                 <td>{{$slide->short_desc}}</td>
                                                 <td>
-                                                    @if($slide->active == 1)
-                                                        <input type="checkbox" checked disabled>
-                                                    @else
-                                                        <input type="checkbox" disabled>
-                                                    @endif
+                                                    <label class="checkbox-container">
+                                                        @if($slide->active == 1)
+                                                            <input type="checkbox" checked >
+                                                        @else
+                                                            <input type="checkbox" >
+                                                        @endif
+                                                        <span class="custom-checkbox"></span>
+                                                    </label>
                                                 </td>
                                                 <td>{{$slide->created_at}}</td>
                                                 <td>{{$slide->updated_at}}</td>

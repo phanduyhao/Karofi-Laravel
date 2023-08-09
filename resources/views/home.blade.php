@@ -21,10 +21,13 @@
                     <div class="swiper-pagination"></div>
                 </div>
                 <div class="category position-absolute flex-column">
-                    @foreach($cates as $cates)
-                        @if($cates->active == 1 && $cates->parent_id == null)
-                            <a href="#water_health" class="category-item">
-                                {{$cates->title}}
+                    @php
+                        $cates1 = $cates;
+                    @endphp
+                    @foreach($cates1 as $cates1)
+                        @if($cates1->active == 1 && $cates1->parent_id == null)
+                            <a href="#{{$cates1->alias}}" class="category-item">
+                                {{$cates1->title}}
                             </a>
                         @endif
                     @endforeach
@@ -44,311 +47,309 @@
             <!-- Content -->
             <div class="main-content">
                 <!--  -->
-                <div class="main-content__cate " id="water_health">
-                    <h1 class="title text-center">
-                        Nước Và Sức Khỏe
-                    </h1>
-                    <div class="cate-child d-flex">
-                        <h3 class="cate-child__item active">
-                            Sống Khỏe Cùng Nước
-                        </h3>
-                        <h3 class="cate-child__item">
-                            Nước Ô Nhiếm & Nguy Cơ
-                        </h3>
-                    </div>
-                    <div class="container">
-                        <div class="swiper cate-news">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/cate-new/catenew1.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/cate-new/catenew2.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/cate-new/catenew3.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/cate-new/catenew3.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/cate-new/catenew3.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
+
+
+
+                <!--  ĐỔ DỮ LIỆU  -->
+                <!--  NƯỚC VÀ SỨC KHỎE  -->
+                @php
+                    $cates2 = $cates;
+                    $catechilds2 = $cates;
+                @endphp
+                @foreach($cates2 as $cate2)
+                    @if($cate2->active == 1 && $cate2->parent_id == null && $cate2->id == 5)
+
+                    <div class="main-content__cate " id="{{$cate2->alias}}">
+                        <!--  ĐỔ DỮ LIỆU DANH MỤC CHA  -->
+                        <h1 class="title text-center">
+                            {{$cate2->title}}
+                        </h1>
+                        <!--  ĐỔ DỮ LIỆU DANH MỤC CON THUỘC DANH MỤC CHA BÊN TRÊN  -->
+                        <div class="cate-child d-flex">
+                            @php
+                                $postcates = []; // Khởi tạo mảng postcate
+                                $index = 1; // Khởi tạo biến index bên ngoài vòng lặp
+                            @endphp
+                            @foreach($catechilds2 as $catechild2)
+                                @if($catechild2->active == 1 && $catechild2->parent_id == $cate2->id)
+                                    <h3 id="{{$catechild2->alias}}" class="cate-child__item @if($index === 1) active @endif">
+                                        {{$catechild2->title}}
+                                    </h3>
+                                    @php
+                                        $postcates[] = $catechild2->id; // Thêm id vào mảng postcate
+                                        $index++; // Tăng biến index sau mỗi lần lặp
+                                    @endphp
+                                @endif
+                            @endforeach
                         </div>
+                        <!--  ĐỔ DỮ BÀI VIẾT THEO DANH MỤC  -->
+                        @php
+                            $cateposts = $cates;
+                            $index = 1;
+                        @endphp
+                        @foreach($postcates as $postcate)
+                            @foreach($cateposts as $catepost)
+                                @if($catepost->id == $postcate)
+                                    <div id="{{$catepost->alias}}" class="swiper-content container {{ $index === 1 ? 'd-block' : 'd-none' }}">
+                                        <div class="swiper cate-news">
+                                            <div class="swiper-wrapper">
+                                                @foreach($posts as $post)
+                                                   @if($post->cate_id == $postcate)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/images/posts/'. $post->thumb) }}" alt="{{$post->title}}">
+                                                            <div class="cate-news__content">
+                                                                <p class="time-address">
+                                                                    {{$post->created_at}} |
+                                                                @foreach($locations as $location)
+                                                                    @if($post->location == $location->id)
+                                                                        {{$location->name_location}}
+                                                                    @endif
+                                                                @endforeach
+                                                                </p>
+                                                                <h3 class="title">
+                                                                    {{$post->title}}
+                                                                </h3>
+                                                                <p class="desc">
+                                                                    {{$post->description}}
+                                                                </p>
+                                                                <a href="" class="readmore">
+                                                                    Đọc tiếp
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                            <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+                                        </div>
+                                    </div>
+                                    @php
+                                        $index++; // Tăng giá trị của biến index sau mỗi lần lặp
+                                    @endphp
+                                @endif
+                            @endforeach
+                        @endforeach
                     </div>
-                </div>
+                @endif
+            @endforeach
+
                 <!--  -->
-                <div id="water_standal" class="main-content__cate ">
-                    <h1 class="title text-center">
-                        Quy Chuẩn Chất Lượng Nước
-                    </h1>
-                    <div class="container cate-banner flex-center-between">
-                        <div class="cate-banner__item">
-                            <div class="cate-banner__img mx-auto flex-center">
-                                <img src="temp/images/Frame-2.png" alt="">
+
+
+                <!--  ĐỔ DỮ LIỆU  -->
+                <!--  BANNER QUY CHUẨN LƯỢNG NƯỚC -->
+                @php
+                    $cates3 = $cates;
+                    $catechilds3 = $cates;
+                @endphp
+                @foreach($cates3 as $cate3)
+                    @if($cate3->active == 1 && $cate3->parent_id == null && $cate3->id == 8)
+
+                        <div class="main-content__cate " id="{{$cate3->alias}}">
+                            <!--  ĐỔ DỮ LIỆU DANH MỤC CHA  -->
+                            <h1 class="title text-center">
+                                {{$cate3->title}}
+                            </h1>
+                            <!--  ĐỔ DỮ BaNNER THEO DANH MỤC  -->
+                            <div id="{{$cate3->alias}}" class="container cate-banner flex-center-between">
+                                @foreach($banners as $banner)
+                                    @if($banner->cate_id == $cate3->id)
+                                        <div class="cate-banner__item">
+                                            <div class="cate-banner__img mx-auto flex-center">
+                                                <img src="{{ asset('storage/images/banners/'. $banner->thumb) }}" alt="{{$banner->title}}">
+                                            </div>
+                                            <h3 class="title text-center">{{$banner->title}}</h3>
+                                            <p class="desc">
+                                                {{$banner->desc}}
+                                            </p>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
-                            <h3 class="title text-center">Quy Chuẩn Nước Tinh Khiết Đóng Chai</h3>
-                            <p class="desc">
-                                Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                            </p>
                         </div>
-                        <div class="cate-banner__item">
-                            <div class="cate-banner__img mx-auto flex-center">
-                                <img src="temp/images/Frame.png" alt="" style="margin-left: -5px">
+                    @endif
+                @endforeach
+
+            <!--  -->
+
+
+{{--                CÔNG NGHỆ VÀ GIẢI PHÁP--}}
+                @php
+                    $cates4 = $cates;
+                    $catechilds4 = $cates;
+                @endphp
+                @foreach($cates4 as $cate4)
+                    @if($cate4->active == 1 && $cate4->parent_id == null && $cate4->id == 9)
+
+                        <div class="main-content__cate " id="{{$cate4->alias}}">
+                            <!--  ĐỔ DỮ LIỆU DANH MỤC CHA  -->
+                            <h1 class="title text-center">
+                                {{$cate4->title}}
+                            </h1>
+                            <!--  ĐỔ DỮ LIỆU DANH MỤC CON THUỘC DANH MỤC CHA BÊN TRÊN  -->
+                            <div class="cate-child d-flex">
+                                @php
+                                    $postcates = []; // Khởi tạo mảng postcate
+                                    $index = 1; // Khởi tạo biến index bên ngoài vòng lặp
+                                @endphp
+                                @foreach($catechilds4 as $catechild4)
+                                    @if($catechild4->active == 1 && $catechild4->parent_id == $cate4->id)
+                                        <h3 id="{{$catechild4->alias}}" class="cate-child__item @if($index === 1) active @endif">
+                                            {{$catechild4->title}}
+                                        </h3>
+                                        @php
+                                            $postcates[] = $catechild4->id; // Thêm id vào mảng postcate
+                                            $index++; // Tăng biến index sau mỗi lần lặp
+                                        @endphp
+                                    @endif
+                                @endforeach
                             </div>
-                            <h3 class="title text-center">Quy Chuẩn Nước Dùng Để Nấu Nướng</h3>
-                            <p class="desc">
-                                Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                            </p>
+                            <!--  ĐỔ DỮ BÀI VIẾT THEO DANH MỤC  -->
+                            @php
+                                $cateposts = $cates;
+                                $index = 1;
+                            @endphp
+                            @foreach($postcates as $postcate)
+                                @foreach($cateposts as $catepost)
+                                    @if($catepost->id == $postcate)
+                                        <div id="{{$catepost->alias}}" class="swiper-content container {{ $index === 1 ? 'd-block' : 'd-none' }}">
+                                        <div class="swiper cate-news">
+                                                <div class="swiper-wrapper">
+                                                    @foreach($posts as $post)
+                                                        @if($post->cate_id == $postcate)
+                                                            <div class="swiper-slide">
+                                                                <img src="{{ asset('storage/images/posts/'. $post->thumb) }}" alt="{{$post->title}}">
+                                                                <div class="cate-news__content">
+                                                                    <p class="time-address">
+                                                                        {{$post->created_at}} |
+                                                                        @foreach($locations as $location)
+                                                                            @if($post->location == $location->id)
+                                                                                {{$location->name_location}}
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </p>
+                                                                    <h3 class="title">
+                                                                        {{$post->title}}
+                                                                    </h3>
+                                                                    <p class="desc">
+                                                                        {{$post->description}}
+                                                                    </p>
+                                                                    <a href="" class="readmore">
+                                                                        Đọc tiếp
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+                                            </div>
+                                        </div>
+                                        @php
+                                            $index++; // Tăng giá trị của biến index sau mỗi lần lặp
+                                        @endphp
+                                    @endif
+                                @endforeach
+                            @endforeach
                         </div>
-                        <div class="cate-banner__item">
-                            <div class="cate-banner__img mx-auto flex-center">
-                                <img src="temp/images/Frame-1.png" alt="" style="margin-left: 7px">
+                @endif
+            @endforeach
+
+
+
+                {{--VIDEO HƯỚNG DẪN SỬ DỤNG --}}
+                @php
+                    $cates4 = $cates;
+                    $catechilds4 = $cates;
+                @endphp
+                @foreach($cates4 as $cate4)
+                    @if($cate4->active == 1 && $cate4->parent_id == null && $cate4->id == 10)
+                        <div class="main-content__cate " id="{{$cate4->alias}}">
+                            <!--  ĐỔ DỮ LIỆU DANH MỤC CHA  -->
+                            <h1 class="title text-center">
+                                {{$cate4->title}}
+                            </h1>
+                            <!--  ĐỔ DỮ LIỆU DANH MỤC CON THUỘC DANH MỤC CHA BÊN TRÊN  -->
+                            <div class="cate-child d-flex">
+                                @php
+                                    $videocates = []; // Khởi tạo mảng postcate
+                                    $index = 1; // Khởi tạo biến index bên ngoài vòng lặp
+                                @endphp
+                                @foreach($catechilds4 as $catechild4)
+                                    @if($catechild4->active == 1 && $catechild4->parent_id == $cate4->id)
+                                        <h3 id="{{$catechild4->alias}}" class="cate-child__item @if($index === 1) active @endif">
+                                            {{$catechild4->title}}
+                                        </h3>
+                                        @php
+                                            $videocates[] = $catechild4->id; // Thêm id vào mảng postcate
+                                            $index++; // Tăng biến index sau mỗi lần lặp
+                                        @endphp
+                                    @endif
+                                @endforeach
                             </div>
-                            <h3 class="title text-center">Quy Chuẩn Nước Sinh Hoạt</h3>
-                            <p class="desc">
-                                Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                            </p>
+                            <!--  ĐỔ DỮ BÀI VIẾT THEO DANH MỤC  -->
+                            @php
+                                $catevideos = $cates;
+                                $index = 1;
+                            @endphp
+                            @foreach($videocates as $videocate)
+                                    @foreach($catevideos as $catevideo)
+                                        @if($catevideo->id == $videocate)
+                                            <div id="{{$catevideo->alias}}" class="video-contain d-flex container {{ $index === 1 ? 'd-flex' : 'd-none' }}">
+                                                @php
+                                                    $categoryIndex = []; // Mảng lưu trữ index của mỗi danh mục
+                                                @endphp
+                                                <div class="video-contain__left position-relative">
+                                                    @foreach($videos as $video)
+                                                        @if($video->cate_id == $catevideo->id)
+                                                            @php
+                                                                $index = isset($categoryIndex[$catevideo->id]) ? $categoryIndex[$catevideo->id] : 1;
+                                                                $categoryIndex[$catevideo->id] = $index + 1;
+                                                            @endphp
+
+                                                            <div id="{{$video->link}}" class="video-player {{ $index === 1 ? 'd-block' : 'd-none' }}">
+                                                                <div id="{{$video->link}}_{{$index}}" class="player position-relative"></div>
+                                                                <img src="{{ asset('storage/images/videos/'. $video->thumb  ) }}" alt="{{$video->id}}-{{$video->title}}" class="bg-video position-absolute w-100">
+                                                                <button class="btn-youtube {{$index}} flex-center">
+                                                                    <img src="/temp/images/arrow.png" alt="">
+                                                                </button>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                @php
+                                                    $index = 1;
+                                                @endphp
+                                                <div class="video-contain__right w-100">
+                                                    @foreach($videos as $video)
+                                                        @if($video->cate_id == $catevideo->id)
+                                                            <a href="" data-target="{{$video->link}}" class="list-video overlay d-flex {{ $index == 1 ? 'active' : '' }}">
+                                                                <button class="btn-youtube flex-center">
+                                                                    <img src="/temp/images/arrow.png" width="10" alt="">
+                                                                </button>
+                                                                <h3 class="title" disabled="">{{ $video->title }}</h3>
+                                                            </a>
+                                                            @php
+                                                                $index++;
+                                                            @endphp
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+
+                                            @php
+                                                $index = 1;
+                                                $index++; // Tăng giá trị của biến index sau mỗi lần lặp
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endforeach
                         </div>
-                    </div>
-                    <!--  -->
-                </div>
-                <!--  -->
-                <div id="solution" class="main-content__cate ">
-                    <h1 class="title text-center">
-                        Công Nghệ Và Giải Pháp
-                    </h1>
-                    <div class="cate-child flex-center">
-                        <h3 class="cate-child__item active">
-                           Công Nghệ Lọc Nước
-                        </h3>
-                        <h3 class="cate-child__item">
-                            Công Nghệ Thông Minh
-                        </h3>
-                        <h3 class="cate-child__item">
-                            Công Nghệ Tạo Nước Tốt
-                        </h3>
-                        <h3 class="cate-child__item">
-                            Công Nghệ Khác
-                        </h3>
-                    </div>
-                    <div class="container">
-                        <div class="swiper cate-news">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/Maskgroup.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/Maskgroup1.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/Maskgroup2.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/cate-new/catenew3.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/temp/images/cate-new/catenew3.png" alt="">
-                                    <div class="cate-news__content">
-                                        <p class="time-address">
-                                            26/04/2022 | Hà Nội
-                                        </p>
-                                        <h3 class="title">
-                                            Nên uống nước vào thời điểm nào?
-                                        </h3>
-                                        <p class="desc">
-                                            Chúng ta thường uống nước khi khát, nhưng khi đó là lúc cơ thể đã bị thiếu nước. Vì vậy hãy uống ước trước khi thấy khát và luôn duy trì thói quen
-                                        </p>
-                                        <a href="" class="readmore">
-                                            Đọc tiếp
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-                <div id="introduce" class="main-content__cate">
-                    <h1 class="title text-center">
-                        Hướng Dẫn Sử Dụng Và Xử Lý Sự Cố Máy Lọc Nước
-                    </h1>
-                    <div class="cate-child flex-center">
-                        <h3 class="cate-child__item active">
-                            Hướng Dẫn Sử Dụng
-                        </h3>
-                        <h3 class="cate-child__item">
-                            Xử Lý Sự Cố
-                        </h3>
-                    </div>
-                    <div class="video-contain d-flex container" id="video_intro">
-                        <div class="video-contain__left position-relative">
-                            <div id="player" class="position-relative"></div>
-                            <img src="/temp/images/bg-video.png" alt="" class="bg-video position-absolute w-100">
-                            <button class="btn-youtube flex-center">
-                                <img src="/temp/images/arrow.png" alt="">
-                            </button>
-                        </div>
-                        <div class="video-contain__right w-100">
-                            <a href="" class="list-video active overlay d-flex">
-                                <button class="btn-youtube flex-center">
-                                    <img src="/temp/images/arrow.png" width="10" alt="">
-                                </button>
-                                <h3 class="title" disabled="">Hướng Dẫn Xử Lý Sự Cố A</h3>
-                            </a>
-                            <a href="" class="list-video overlay d-flex">
-                                <button class="btn-youtube flex-center">
-                                    <img src="/temp/images/arrow.png" width="10" alt="">
-                                </button>
-                                <h3 class="title" disabled="">Hướng Dẫn Xử Lý Sự Cố A</h3>
-                            </a>
-                            <a href="" class="list-video overlay d-flex">
-                                <button class="btn-youtube flex-center">
-                                    <img src="/temp/images/arrow.png" width="10" alt="">
-                                </button>
-                                <h3 class="title" disabled="">Hướng Dẫn Xử Lý Sự Cố A</h3>
-                            </a>
-                            <a href="" class="list-video overlay d-flex">
-                                <button class="btn-youtube flex-center">
-                                    <img src="/temp/images/arrow.png" width="10" alt="">
-                                </button>
-                                <h3 class="title" disabled="">Hướng Dẫn Xử Lý Sự Cố A</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex-center">
-                        <a href="" class="btn-more">Xem tất cả video</a>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
+
+
+
                 <!--  -->
                 <div class="comment container-width">
                     <div class="title mx-auto position-relative">Hỏi Đáp Của Khách Hàng

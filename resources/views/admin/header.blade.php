@@ -1,6 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ $title }}</title>
+<script src="https://www.youtube.com/iframe_api"></script>
+<link rel="shortcut icon" href="temp/images/bg-video.png" type="image/x-icon">
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -42,4 +44,45 @@
         border-radius: 50%;
         align-items: center;
     }
+    #cke_1_contents{
+        height: 500px !important;
+    }
+    .text-black{
+        color: black !important;
+    }
+    /* Định dạng cho label bao bọc checkbox */
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ẩn checkbox thật */
+    .checkbox-container input[type="checkbox"] {
+        display: none;
+    }
+
+    /* Thiết lập kích thước và kiểu của checkbox tùy thuộc vào trạng thái */
+    .checkbox-container .custom-checkbox {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    /* Đổi màu nền khi checkbox được chọn */
+    .checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
+        background-color: greenyellow;
+        border-color: greenyellow;
+    }
+
+    /* Đổi màu nền khi checkbox bị vô hiệu hóa */
+    .checkbox-container input[type="checkbox"]:disabled + .custom-checkbox {
+        background-color: #f8f9fa;
+        border-color: #ccc;
+        cursor: not-allowed;
+    }
+
 </style>

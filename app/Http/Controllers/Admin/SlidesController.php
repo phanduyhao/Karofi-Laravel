@@ -95,10 +95,8 @@ class SlidesController extends Controller
     {
         $this->validate($request,[
             'title' => 'required', // Kiểm tra đã nhập Email chưa, có đúng định dạng Email không ?
-            'image' => 'required' // Kiểm tra đã nhập mật khẩu chưa ?
         ],[
             'title.required' => 'Vui lòng nhập tiêu đề Slide !',
-            'image.required' => 'Vui lòng thêm ảnh!'
         ] );
         // Kiểm tra xem cate_id có tồn tại trong bảng Cate hay không
         $slide->title = $request->title;

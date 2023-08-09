@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('cates', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->unsignedBigInteger('parent_id')->nullable(); // Thêm trường parent_id
-            $table->foreign('parent_id')->references('id')->on('cates')->onDelete('cascade');
             $table->timestamps();
         });
     }

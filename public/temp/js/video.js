@@ -1,26 +1,194 @@
-// Xử lý Nhúng video
-var player;
-// Hàm tạo video player từ YouTube Player API
-function onYouTubePlayerAPIReady() {
-    player = new YT.Player('player', {
-        videoId: 'd11sg3Yb4S0', // Thay VIDEO_ID bằng mã video YouTube cần phát
-        playerVars: {
-            autoplay: 0, // Tắt tự động phát video
-        },
-    });
-}
-// Xử lý sự kiện click vào nút play
-var btn_youtube = document.querySelector('.btn-youtube')
-btn_youtube.addEventListener('click', function () {
-    btn_youtube.classList.add('d-none')
-    document.querySelector('.bg-video').classList.add('d-none')
-    player.playVideo(); // Khi click vào nút, bắt đầu phát video
-});
-//Scroll Head Page
-document.getElementById('backtotop').addEventListener('click', function() {
-    // Cuộn lên đầu trang
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth' // Hiệu ứng cuộn mượt (smooth scroll)
+// $(document).ready(function () {
+//     $('.video-contain').each(function () {
+//         var idVideoContain = $(this).attr('id');
+//         var players = {};
+//
+//         function onYouTubePlayerAPIReady() {
+//             destroyOldPlayers();
+//             initializePlayers();
+//         }
+//
+//         function destroyOldPlayers() {
+//             for (var playerId in players) {
+//                 if (players.hasOwnProperty(playerId)) {
+//                     players[playerId].destroy();
+//                 }
+//             }
+//             players = {}; // Reset the players object
+//         }
+//
+//         function initializePlayers() {
+//             $('#' + idVideoContain + ' .video-player').each(function () {
+//                 var videoId = $(this).attr('id');
+//                 var playerId = $(this).find('.player').attr('id');
+//
+//                 players[playerId] = new YT.Player(playerId, {
+//                     videoId: videoId,
+//                     playerVars: {
+//                         autoplay: 0,
+//                     },
+//                 });
+//
+//                 var playButton = $(this).find('.btn-youtube');
+//                 var backgroundImage = $(this).find('.bg-video');
+//
+//                 playButton.off('click');
+//
+//                 playButton.on('click', function () {
+//                     playButton.addClass('d-none');
+//                     backgroundImage.addClass('d-none');
+//                     players[playerId].playVideo();
+//                 });
+//             });
+//
+//             $('#' + idVideoContain + ' .list-video').off('click');
+//
+//             $('#' + idVideoContain + ' .list-video').on('click', function (event) {
+//                 event.preventDefault();
+//
+//                 var targetVideoId = $(this).attr('data-target');
+//
+//                 for (var id in players) {
+//                     if (id !== targetVideoId) {
+//                         players[id].stopVideo();
+//                     }
+//                 }
+//
+//                 $('#' + idVideoContain + ' .video-player .btn-youtube').removeClass('d-none').addClass('d-block');
+//                 $('#' + idVideoContain + ' .video-player .bg-video').removeClass('d-none').addClass('d-block');
+//
+//                 $('#' + idVideoContain + ' .video-player').addClass('d-none');
+//                 $('#' + targetVideoId).removeClass('d-none');
+//
+//                 $('#' + idVideoContain + ' .list-video').removeClass('active');
+//                 $(this).addClass('active');
+//             });
+//         }
+//
+//         function stopCurrentVideo() {
+//             for (var id in players) {
+//                 players[id].stopVideo();
+//             }
+//         }
+//
+//         initializePlayers();
+//
+//         // Xử lý sự kiện chuyển tab
+//         $(".main-content__cate .cate-child__item").click(function () {
+//             stopCurrentVideo();
+//             var cateID = $(this).closest('.main-content__cate').attr('id'); // Lấy ID của phần tử cha gần nhất có class main-content__cate
+//             var itemId = $(this).attr("id");
+//             // VIDEO
+//             $("#" + cateID + " .video-contain").addClass("d-none");
+//             $("#" + cateID + " .video-contain").removeClass("d-flex");
+//             // Hiển thị swiper-content tương ứng với tab được click
+//             $("#" + itemId + ".video-contain").removeClass("d-none");
+//             $("#" + itemId + ".video-contain").addClass("d-flex");
+//         });
+//     });
+// });
+
+
+//
+
+
+
+$(document).ready(function () {
+    $('.video-contain').each(function () {
+        var idVideoContain = $(this).attr('id');
+        var players = {};
+
+        function onYouTubePlayerAPIReady() {
+            destroyOldPlayers();
+            initializePlayers();
+        }
+
+        function destroyOldPlayers() {
+            for (var playerId in players) {
+                if (players.hasOwnProperty(playerId)) {
+                    players[playerId].destroy();
+                }
+            }
+            players = {}; // Reset the players object
+        }
+
+        function initializePlayers() {
+            $('#' + idVideoContain + ' .video-player').each(function () {
+                var videoId = $(this).attr('id');
+                var playerId = $(this).find('.player').attr('id');
+
+                players[playerId] = new YT.Player(playerId, {
+                    videoId: videoId,
+                    playerVars: {
+                        autoplay: 0,
+                    },
+                });
+
+                var playButton = $(this).find('.btn-youtube');
+                var backgroundImage = $(this).find('.bg-video');
+
+                playButton.off('click');
+
+                playButton.on('click', function () {
+                    playButton.addClass('d-none');
+                    backgroundImage.addClass('d-none');
+                    players[playerId].playVideo();
+                });
+            });
+
+            $('#' + idVideoContain + ' .list-video').off('click');
+
+            $('#' + idVideoContain + ' .list-video').on('click', function (event) {
+                event.preventDefault();
+
+                var targetVideoId = $(this).attr('data-target');
+
+                for (var id in players) {
+                    if (id !== targetVideoId) {
+                        players[id].stopVideo();
+                        $('#' + id + ' .btn-youtube').removeClass('d-none').addClass('d-block');
+                        $('#' + id + ' .bg-video').removeClass('d-none').addClass('d-block');
+                    }
+                }
+
+                $('#' + idVideoContain + ' .video-player').addClass('d-none');
+                $('#' + targetVideoId).removeClass('d-none');
+
+                $('#' + idVideoContain + ' .list-video').removeClass('active');
+                $(this).addClass('active');
+
+                // Thêm đoạn code sau để ẩn bg-video và btn-video khi chuyển sang danh mục khác
+                $('.bg-video').addClass('d-block').removeClass('d-none');
+                $('.btn-youtube').addClass('d-block').removeClass('d-none');
+            });
+        }
+
+        function stopAllVideos() {
+            for (var id in players) {
+                players[id].stopVideo();
+                $('#' + id + ' .btn-youtube').removeClass('d-none').addClass('d-block');
+                $('#' + id + ' .bg-video').removeClass('d-none').addClass('d-block');
+            }
+        }
+
+        initializePlayers();
+
+        // Xử lý sự kiện chuyển tab
+        $(".main-content__cate .cate-child__item").click(function () {
+            stopAllVideos();
+            var cateID = $(this).closest('.main-content__cate').attr('id'); // Lấy ID của phần tử cha gần nhất có class main-content__cate
+            var itemId = $(this).attr("id");
+            // Thêm đoạn code sau để ẩn bg-video và btn-video khi chuyển sang danh mục khác
+            $('.bg-video').addClass('d-block').removeClass('d-none');
+            $('.btn-youtube').addClass('d-block').removeClass('d-none');
+            // VIDEO
+            $("#" + cateID + " .video-contain").addClass("d-none");
+            $("#" + cateID + " .video-contain").removeClass("d-flex");
+            // Hiển thị swiper-content tương ứng với tab được click
+            $("#" + itemId + ".video-contain").removeClass("d-none");
+            $("#" + itemId + ".video-contain").addClass("d-flex");
+
+
+        });
     });
 });

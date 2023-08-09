@@ -57,20 +57,20 @@ function updateFileInput() {
 // tạo Alias tự động
 document.addEventListener('DOMContentLoaded', function() {
     var titleInput = document.getElementById('title');
-    var slugInput = document.getElementById('alias');
+    var aliasInput = document.getElementById('alias');
 
     titleInput.addEventListener('input', function () {
         var title = this.value;
         var slug = slugify(title);
-        slugInput.value = slug;
+        aliasInput.value = slug;
     });
+
     function slugify(text) {
-        // Chuyển đổi ký tự có dấu thành ký tự không dấu tương ứng
         var unaccentedText = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         return unaccentedText.toLowerCase().trim()
-            .replace(/\s+/g, '-')         // Thay thế khoảng trắng bằng dấu gạch ngang
-            .replace(/[^\w\-]+/g, '')     // Loại bỏ các ký tự không hợp lệ
-            .replace(/\-\-+/g, '-')       // Loại bỏ các dấu gạch ngang liên tiếp
-            .replace(/^-+|-+$/g, '');     // Loại bỏ dấu gạch ngang ở đầu và cuối chuỗi
+            .replace(/\s+/g, '-')
+            .replace(/[^\w\-]+/g, '')
+            .replace(/\-\-+/g, '-')
+            .replace(/^-+|-+$/g, '');
     }
 });

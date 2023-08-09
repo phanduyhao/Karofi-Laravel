@@ -1,5 +1,6 @@
-
-
+<script>
+    CKEDITOR.replace('content');
+</script>
 <script src="/temp/admin/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="/temp/admin/plugins/jquery-ui/jquery-ui.min.js"></script>

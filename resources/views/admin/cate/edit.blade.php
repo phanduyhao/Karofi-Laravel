@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Short Desc</label>
-                    <input value="{{$cate->short_desc}}" name="desc" type="text" placeholder="Category Description "  class="form-control" id="alias">
+                    <input value="{{$cate->short_desc}}" name="desc" type="text" placeholder="Category Description "  class="form-control" id="desc">
                 </div>
                 <div class="form-group">
                     <label for="">Parent Id</label>
