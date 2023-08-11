@@ -49,7 +49,6 @@
                 <!--  -->
 
 
-
                 <!--  ĐỔ DỮ LIỆU  -->
                 <!--  NƯỚC VÀ SỨC KHỎE  -->
                 @php
@@ -112,7 +111,7 @@
                                                                 <p class="desc">
                                                                     {{$post->description}}
                                                                 </p>
-                                                                <a href="" class="readmore">
+                                                                <a href="{{ route('postDetails', ['alias' => $post->alias, 'id' => $post->id]) }}" class="readmore">
                                                                     Đọc tiếp
                                                                 </a>
                                                             </div>
@@ -234,7 +233,7 @@
                                                                     <p class="desc">
                                                                         {{$post->description}}
                                                                     </p>
-                                                                    <a href="" class="readmore">
+                                                                    <a href="{{ route('postDetails', ['alias' => $post->alias, 'id' => $post->id]) }}" class="readmore">
                                                                         Đọc tiếp
                                                                     </a>
                                                                 </div>
@@ -349,83 +348,99 @@
                 @endforeach
 
 
-
-                <!--  -->
+                <!-- COMMENT -->
                 <div class="comment container-width">
                     <div class="title mx-auto position-relative">Hỏi Đáp Của Khách Hàng
                         <img class="position-absolute" src="temp/images/icon-ask.png" alt="">
                     </div>
-                    <div class="comment-user ">
-                        <div class="d-flex">
-                            <img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">
-                            <div class="comment-user__infor">
-                                <p class="name">Vũ Thị Kim Hường</p>
-                                <p class="type">cần tư vấn</p>
-                            </div>
-                        </div>
-                        <div class="reply">
-                            <p class="reply-text">Trả lời</p>
-                            <div class="reply-box">
-                                <div class="d-flex reply-infor">
-                                    <img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">
-                                    <p class="name">Nguyễn Ngọc Chiến</p>
+                    <!-- TEST -->
+                    <form id="boxCommentForm" class="comment-box" data-action="{{route('sendComment')}}">
+                        @csrf
+                        <div class="form-comment w-100">
+                            <div class="form-group d-flex">
+                                <div class="form-group__item name w-100">
+                                    <input type="text" name="user_name" placeholder="Nhập họ tên *" class="input-field  w-100" data-require="Vui lòng nhập họ tên!">
                                 </div>
-                                <p class="reply-content">
-                                    Sức khỏe là vốn quý của con người. Ăn uống và vận động hợp lý giúp nâng cao sức khỏe và phòng chống bệnh tật.
-                                    Việc tham gia chơi các môn thể thao không những giúp cơ thể khỏe về thể chất mà còn khỏe về tinh thần.
-                                    Khi tập luyện thể dục thể thao, phải đảm bảo có lượng nước trước, trong và sau khi tập thể dục.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-user ">
-                        <div class="d-flex">
-                            <img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">
-                            <div class="comment-user__infor">
-                                <p class="name">Vũ Thị Kim Hường</p>
-                                <p class="type">cần tư vấn</p>
-                            </div>
-                        </div>
-                        <div class="reply">
-                            <p class="reply-text">Trả lời</p>
-                            <div class="reply-box">
-                                <div class="d-flex reply-infor">
-                                    <img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">
-                                    <p class="name">Nguyễn Ngọc Chiến</p>
+                                <div class="form-group__item email w-100">
+                                    <input type="email" name="user_email" placeholder="Nhập Email *" class="input-field  w-100" data-require="Vui lòng nhập Email!">
                                 </div>
-                                <p class="reply-content">
-                                    Sức khỏe là vốn quý của con người. Ăn uống và vận động hợp lý giúp nâng cao sức khỏe và phòng chống bệnh tật.
-                                    Việc tham gia chơi các môn thể thao không những giúp cơ thể khỏe về thể chất mà còn khỏe về tinh thần.
-                                    Khi tập luyện thể dục thể thao, phải đảm bảo có lượng nước trước, trong và sau khi tập thể dục.
-                                </p>
                             </div>
+                            <textarea name="comment_content" class="input-field textarea-note w-100" id="" rows="5" placeholder="Nhập bình luận *" data-require="Vui lòng nhập nội dung!"></textarea>
                         </div>
-                    </div>
-                    <div class="comment-user ">
-                        <div class="d-flex">
-                            <img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">
-                            <div class="comment-user__infor">
-                                <p class="name">Vũ Thị Kim Hường</p>
-                                <p class="type">cần tư vấn</p>
-                            </div>
-                        </div>
-                        <div class="reply">
-                            <p class="reply-text">Trả lời</p>
-                            <div class="reply-box">
-                                <div class="d-flex reply-infor">
-                                    <img src="temp/images/Accountcircle.png" class="comment-user__img gray" alt="">
-                                    <p class="name">Nguyễn Ngọc Chiến</p>
+                        <button type="submit" class="send-comment">Gửi bình luận</button>
+                    </form>
+                    <!-- TEST -->
+
+                    <div class="comment-list">
+                        @foreach($comments->sortByDesc('created_at') as $comment)
+                            @if($comment->parent_comment_id == null)
+                                <div class="comment-user ">
+                                    <p class="id_user d-none" >{{ $comment->id }}</p>
+                                    <div class="d-flex" style="align-items: flex-start;">
+                                        <img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">
+                                        <div class="comment-user__infor">
+                                            <p class="name">{{ $comment->user_name  }}</p>
+                                            <p class="type">{{ $comment->comment_content }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="reply">
+                                        <p class="reply-text">
+                                            <a class="reply-text__link" href="">
+                                                Trả lời
+                                                <span class="id_user d-none" >{{ $comment->id }}</span>
+                                            </a>
+                                        </p>
+                                        <!-- TEST -->
+                                        <form  id="boxCommentFormReply" class="comment-box child d-none" data-action="{{route('sendComment')}}" style="background: #FFFFFFB2">
+                                            @csrf
+                                            <input type="hidden" name="parent_comment_id" value="{{ $comment->id }}"> <!-- Đặt parent_comment_id -->
+                                            <div class="form-comment w-100">
+                                                <div class="form-group d-flex">
+                                                    <div class="form-group__item name w-100">
+                                                        <input type="text" name="user_name" placeholder="Nhập họ tên *" class="input-field  w-100" data-require="Vui lòng nhập họ tên!">
+                                                    </div>
+                                                    <div class="form-group__item email w-100">
+                                                        <input type="email" name="user_email" placeholder="Nhập Email *" class="input-field  w-100" data-require="Vui lòng nhập Email!">
+                                                    </div>
+                                                </div>
+                                                <textarea name="comment_content" class="input-field textarea-note w-100" id="" rows="5" placeholder="Nhập bình luận *" data-require="Vui lòng nhập nội dung!"></textarea>
+                                            </div>
+                                            <button type="submit" class="send-comment">Gửi bình luận</button>
+                                        </form>
+                                        <!-- TEST -->
+                                        @if($comment->hasChildren()) <!-- Kiểm tra nếu có comment con -->
+                                            <div class="reply-box">
+                                                @php
+                                                    $comment_childs = $comments;
+                                                @endphp
+                                                <div class="comment-list__child">
+                                                    @foreach($comment_childs->sortByDesc('created_at') as $comment_child)
+                                                        @if($comment_child->parent_comment_id == $comment->id)
+                                                          <div style="margin-bottom: 30px">
+                                                              <div class="d-flex reply-infor" style="align-items: flex-start;">
+                                                                  <img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">
+                                                                  <p class="name">{{ $comment_child->user_name }}</p>
+                                                              </div>
+                                                              <p class="reply-content">
+                                                                  {{ $comment_child->comment_content }}
+                                                              </p>
+                                                          </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
-                                <p class="reply-content">
-                                    Sức khỏe là vốn quý của con người. Ăn uống và vận động hợp lý giúp nâng cao sức khỏe và phòng chống bệnh tật.
-                                    Việc tham gia chơi các môn thể thao không những giúp cơ thể khỏe về thể chất mà còn khỏe về tinh thần.
-                                    Khi tập luyện thể dục thể thao, phải đảm bảo có lượng nước trước, trong và sau khi tập thể dục.
-                                </p>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
-                <!--  -->
+
+
+
+
+                <!-- ADVISE -->
                 <div class="main-content__cate advise">
                     <h1 class="title text-center">
                         Chuyên Gia Tư Vấn
@@ -437,31 +452,32 @@
                             <span>Tại Đây</span>
                         </h2>
                         <img src="temp/images/doctor.png" class="position-absolute img-doctor" alt="">
-                        <form action="" class="mx-auto">
+                        <form data-action="{{ route('sendFeedBack') }}" method="post" id="feedBackForm" class="mx-auto">
                             @csrf
                             <div class="form-group flex-center-between">
                                 <div class="form-group__item w-100 position-relative">
-                                    <input type="text" placeholder="Họ và tên" class="position-absolute name">
+                                    <input name="name" type="text" placeholder="Họ và tên *" class="input-field position-absolute name" data-require="Vui lòng nhập họ tên!">
                                     <img src="temp/images/iconuser.png" alt="" class="position-relative">
                                 </div>
                                 <div class="form-group__item w-100 position-relative">
-                                    <input type="email" placeholder="Mail" class="position-absolute name">
+                                    <input name="email" type="email" placeholder="Mail *" class="input-field position-absolute name" data-require="Vui lòng nhập Email!">
                                     <img src="temp/images/iconemail.png" alt="" class="position-relative">
+                                    <span class="error-email d-none">Chưa nhập đúng kiểu Email!</span>
                                 </div>
                             </div>
                             <div class="form-group middle flex-center-between">
                                 <div class="form-group__item w-100 position-relative">
-                                    <input type="text" placeholder="Điện thoại" class="position-absolute name">
+                                    <input name="phone" type="text" placeholder="Điện thoại *" class="input-field position-absolute name" data-require="Vui lòng nhập Số điện thoại!">
                                     <img src="temp/images/iconphone.png" alt="" class="position-relative">
                                 </div>
                                 <div class="form-group__item w-100 position-relative">
-                                    <input type="text" placeholder="Địa chỉ" class="position-absolute name">
+                                    <input name="address" type="text" placeholder="Địa chỉ *" class="input-field position-absolute name" data-require="Vui lòng nhập địa chỉ!">
                                     <img src="temp/images/iconlocation.png" alt="" class="position-relative">
                                 </div>
                             </div>
                             <div class="textarea position-relative">
                                 <img src="temp/images/iconask.png" alt="" class="position-absolute img-ask">
-                                <textarea class="textarea-note w-100" name="" id="" rows="14">Câu hỏi</textarea>
+                                <textarea name="contents" class="input-field textarea-note w-100" id="" rows="14" placeholder="Câu hỏi *" data-require="Vui lòng nhập nội dung!"></textarea>
                             </div>
                             <div class="flex-center">
                                 <button type="submit" href="" class="btn-more">GỬI CÂU HỎI</button>

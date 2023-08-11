@@ -8,6 +8,7 @@ use App\Models\slides;
 use App\Models\posts;
 use App\Http\Controllers\save;
 use App\Models\videos;
+use App\Models\comments;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,7 +20,8 @@ class HomeController extends Controller
         $banners = banners::all();
         $locations = locations::all();
         $videos = videos::all();
-        return view('home',compact('slides','cates','posts','locations','banners','videos'),[
+        $comments = comments::all();
+        return view('home',compact('slides','cates','posts','locations','banners','videos','comments'),[
             'title' => 'Trang chủ'
         ]);
     }

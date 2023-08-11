@@ -273,6 +273,9 @@ label {
   box-sizing: border-box;
   scroll-behavior: smooth; }
 
+.input-error {
+  border: 2px solid red !important; }
+
 .container {
   max-width: 1172px;
   width: 100%;
@@ -636,6 +639,38 @@ input[type="number"]::-webkit-outer-spin-button {
       .main-content .comment .title img {
         left: -4%;
         top: -20%; }
+    .main-content .comment-box {
+      margin: 15px 0; }
+      .main-content .comment-box .form-comment {
+        margin-right: 20px; }
+      .main-content .comment-box textarea, .main-content .comment-box input {
+        outline: 0;
+        border: 0;
+        height: 40px;
+        margin-bottom: 15px;
+        border-radius: 3px;
+        padding: 5px 20px;
+        font-size: 14px;
+        box-shadow: 0px 4px 6px 0px #0000001A; }
+      .main-content .comment-box textarea {
+        height: auto; }
+      .main-content .comment-box .name {
+        margin-right: 20px; }
+      .main-content .comment-box .send-comment {
+        transition: .3s all;
+        background: #313131;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        height: max-content;
+        border: 0;
+        padding: 10px 15px;
+        border-radius: 3px; }
+        .main-content .comment-box .send-comment:hover {
+          background: #00ADEE;
+          color: black;
+          transition: .3s all;
+          cursor: pointer; }
     .main-content .comment-user {
       align-items: center;
       margin-top: 40px; }
@@ -648,29 +683,37 @@ input[type="number"]::-webkit-outer-spin-button {
         margin-bottom: 10px;
         font-size: 14px; }
       .main-content .comment-user .type {
-        text-transform: uppercase;
         font-size: 14px; }
       .main-content .comment-user .reply {
         margin-left: 53px;
         margin-top: 17px; }
+        .main-content .comment-user .reply .comment-box.child {
+          padding: 15px;
+          background: white;
+          border-radius: 3px; }
         .main-content .comment-user .reply-text {
-          font-size: 12px;
-          color: #00ADEE;
           margin-bottom: 10px; }
+          .main-content .comment-user .reply-text a {
+            font-size: 12px;
+            color: #00ADEE; }
         .main-content .comment-user .reply-box {
-          padding: 20px 50px 45px 16px;
+          padding: 20px 50px 15px 16px;
           background: #FFFFFFB2;
           border-radius: 11px;
           box-shadow: 0px 4px 6px 0px #0000001A; }
+          .main-content .comment-user .reply-box form {
+            margin: 0; }
         .main-content .comment-user .reply-infor {
-          align-items: center; }
+          align-items: center;
+          align-items: flex-start; }
           .main-content .comment-user .reply-infor .name {
             margin: 0;
             margin-left: 10px; }
         .main-content .comment-user .reply-content {
           line-height: 1.3em;
           font-size: 14px;
-          margin-left: 53px; }
+          margin-left: 53px;
+          margin-top: -10px; }
   .main-content .advise {
     margin-top: 115px; }
     .main-content .advise-form {

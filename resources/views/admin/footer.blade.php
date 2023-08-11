@@ -36,4 +36,3 @@
 <script src="/temp/admin/dist/js/pages/dashboard.js"></script>
 <script type="text/javascript" src="/temp/build/js/main.min.js"></script>
 <script type="text/javascript" src="/temp/build/js/admin.min.js"></script>
-

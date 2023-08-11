@@ -5,8 +5,8 @@ document.getElementById('backtotop').addEventListener('click', function() {
         behavior: 'smooth' // Hiệu ứng cuộn mượt (smooth scroll)
     });
 });
-$(document).ready(function() {
 
+$(document).ready(function() {
 
     // Xử lý Click Thêm Active
     function addActive(event, selector) {
@@ -49,4 +49,4 @@ $(document).ready(function() {
 
 
 
-//
+

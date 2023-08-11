@@ -55,7 +55,11 @@
                     </defs>
                 </svg>
             </a>
-            <a href="/admin" class="header-icon__item">
+            @if (Auth::check())
+                <a href="/admin/main" class="header-icon__item">
+            @else
+                <a href="/login" class="header-icon__item">
+            @endif
                 <svg width="34" height="31" viewBox="0 0 34 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M28.3334 27.1254V24.5831C28.3334 23.2345 27.7364 21.9412 26.6737 20.9876C25.611 20.034 24.1696 19.4983 22.6667 19.4983H11.3334C9.83052 19.4983 8.38918 20.034 7.32648 20.9876C6.26377 21.9412 5.66675 23.2345 5.66675 24.5831V27.1254" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16.9999 14.4135C20.1295 14.4135 22.6666 12.137 22.6666 9.32875C22.6666 6.52051 20.1295 4.24399 16.9999 4.24399C13.8703 4.24399 11.3333 6.52051 11.3333 9.32875C11.3333 12.137 13.8703 14.4135 16.9999 14.4135Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

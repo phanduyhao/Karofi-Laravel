@@ -7,7 +7,6 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <a href="{{Route('feedbacks.create')}}" class="btn btn-success px-4 mb-3 font-weight-bold py-2">Thêm mới danh mục</a>
                         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6"></div>
@@ -19,13 +18,12 @@
                                         <thead>
                                         <tr>
                                             <th>feedbackID</th>
-                                            <th>Title</th>
-                                            <th>Alias</th>
-                                            <th>Short Desc</th>
-                                            <th>Parent_id</th>
-                                            <th>Status</th>
-                                            <th>Create_Time</th>
-                                            <th>Update_Time</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Address</th>
+                                            <th>Seen</th>
+                                            <th>Time</th>
                                             <th>#</th>
                                         </tr>
                                         </thead>
@@ -33,17 +31,13 @@
                                         @foreach($feedbacks as $feedback)
                                             <tr class="odd">
                                                 <td>{{$feedback->id}}</td>
-                                                <td>{{$feedback->title}}</td>
-                                                <td>{{$feedback->alias}}</td>
-                                                <td>{{$feedback->short_desc}}</td>
-                                                @if($feedback->parent_id == null)
-                                                    <td>0</td>
-                                                @else
-                                                    <td>{{$feedback->parent_id}}</td>
-                                                @endif
+                                                <td>{{$feedback->name}}</td>
+                                                <td>{{$feedback->email}}</td>
+                                                <td>{{$feedback->phone}}</td>
+                                                <td>{{$feedback->address}}</td>
                                                 <td>
                                                     <label class="checkbox-container">
-                                                        @if($feedback->active == 1)
+                                                        @if($feedback->seen == 1)
                                                             <input type="checkbox" checked >
                                                         @else
                                                             <input type="checkbox" >
@@ -52,10 +46,9 @@
                                                     </label>
                                                 </td>
                                                 <td>{{$feedback->created_at}}</td>
-                                                <td>{{$feedback->updated_at}}</td>
                                                 <td style="width: 20%">
                                                     <div class="d-flex justify-content-around">
-                                                        <a href="{{ route('feedbacks.edit', ['feedback' => $feedback]) }}" class="btn btn-info font-weight-bold px-4 py-2">Chỉnh sửa</a>
+                                                        <a href="{{ route('feedbacks.show', ['feedback' => $feedback]) }}" class="btn btn-warning font-weight-bold px-4 py-2 mx-1 text-nowrap">Chi tiết</a>
                                                         <form action="{{ route('feedbacks.destroy', ['feedback' => $feedback]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')

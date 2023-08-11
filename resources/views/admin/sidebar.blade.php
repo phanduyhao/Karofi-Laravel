@@ -8,7 +8,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
+      <!-- Sidebar User panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="/temp/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -17,10 +17,10 @@
           <a href="#" class="d-block">Alexander Pierce</a>
         </div>
       </div>
-{{--      <form action="{{route('logout')}}" method="post" class="logout">--}}
-{{--            @csrf--}}
-{{--            <button type="submit">Đăng xuất</button>--}}
-{{--      </form>--}}
+      <form action="{{route('logout')}}" method="post" class="logout">
+            @csrf
+            <button type="submit">Đăng xuất</button>
+      </form>
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -84,6 +84,22 @@
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Quản lý Video
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('feedbacks.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Quản lý phản hồi
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('comments.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Quản lý bình luận
                     </p>
                 </a>
             </li>
