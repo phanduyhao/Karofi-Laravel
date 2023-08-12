@@ -7,7 +7,7 @@
         "run": "php artisan serve",
         "makeController": "php artisan make:controller PostController ",
         "makeController Full Class": "php artisan make:controller Admin/adminOrders --resource",
-        "makeModel-Controller-Migration": "php artisan make:model comments -mcr",
+        "makeModel-Controller-Migration": "php artisan make:model shortcodes -mcr",
         "RunPHPCommand": " php artisan tinker ",
         "CreatePass": "echo bcrypt('12345')",
         "CreateMigration": "php artisan make:migration update_cmt",

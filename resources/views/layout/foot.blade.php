@@ -24,10 +24,11 @@
                         // Xóa Các Dữ liệu cũ trong các ô Input
                         $(`#${formID} input[type=text], #${formID} input[type=email], #${formID} textarea`).val('');
                         // Gọi hàm hiển thị Comment ra HTML
+                        var dataId = $('#'+formID+' .boxCommentFormReplyID ').attr('id');
                         if (formID === 'boxCommentForm') {
                             appendNewComment(response, 'comment-list');
-                        } else if (formID === 'boxCommentFormReply') {
-                            appendNewComment(response, 'comment-list__child');
+                        } else if (formID === 'boxCommentFormReply_'+dataId) {
+                            appendNewComment(response, 'comment-list__child-'+dataId);
                         }
                     },
                     error: function() {
@@ -92,7 +93,7 @@
         }
 
 
-    //    HIỂN THỊ COMMENT
+        //    HIỂN THỊ COMMENT
         function appendNewComment(commentData, targetList) {
             var newComment = $('<div class="comment-user">' +
                 '<p class="id_user d-none" >commentData.id</p>'+

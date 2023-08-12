@@ -629,6 +629,8 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 65px 140px 140px;
     background: #F2F2F2;
     color: #313131 !important; }
+    .main-content .comment #boxCommentForm {
+      margin-top: 55px !important; }
     .main-content .comment .title {
       padding: 5px 20px 8px 50px;
       font-size: 20px;

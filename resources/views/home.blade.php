@@ -391,7 +391,8 @@
                                             </a>
                                         </p>
                                         <!-- TEST -->
-                                        <form  id="boxCommentFormReply" class="comment-box child d-none" data-action="{{route('sendComment')}}" style="background: #FFFFFFB2">
+                                        <form  id="boxCommentFormReply_{{ $comment->id }}" class="comment-box child d-none" data-action="{{route('sendComment')}}" style="background: #FFFFFFB2">
+                                            <p id="{{ $comment->id }}" class="boxCommentFormReplyID d-none"></p>
                                             @csrf
                                             <input type="hidden" name="parent_comment_id" value="{{ $comment->id }}"> <!-- Đặt parent_comment_id -->
                                             <div class="form-comment w-100">
@@ -413,7 +414,7 @@
                                                 @php
                                                     $comment_childs = $comments;
                                                 @endphp
-                                                <div class="comment-list__child">
+                                                <div class="comment-list__child-{{ $comment->id }}">
                                                     @foreach($comment_childs->sortByDesc('created_at') as $comment_child)
                                                         @if($comment_child->parent_comment_id == $comment->id)
                                                           <div style="margin-bottom: 30px">
