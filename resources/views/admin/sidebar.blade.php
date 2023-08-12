@@ -19,7 +19,7 @@
       </div>
       <form action="{{route('logout')}}" method="post" class="logout">
             @csrf
-            <button type="submit">Đăng xuất</button>
+          <button class="btn btn-success px-4 mb-3 font-weight-bold py-2" type="submit">Đăng xuất</button>
       </form>
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -41,8 +41,8 @@
 
           <li class="nav-item">
             <a href="{{route('slides.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
+                <i class="nav-icon far fa-image"></i>
+                <p>
                 Quản lý slide
               </p>
             </a>
@@ -57,7 +57,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('posts.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-file"></i>
                     <p>
                         Quản lý bài viết
                     </p>
@@ -65,7 +65,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('locations.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-chart-pie"></i>
                     <p>
                         Quản lý địa chỉ
                     </p>
@@ -73,7 +73,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('banners.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-copy"></i>
                     <p>
                         Quản lý banners
                     </p>
@@ -81,7 +81,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('videos.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-tree"></i>
                     <p>
                         Quản lý Video
                     </p>
@@ -89,7 +89,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('feedbacks.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon far fa-envelope"></i>
                     <p>
                         Quản lý phản hồi
                     </p>
@@ -97,7 +97,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('comments.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Quản lý bình luận
                     </p>
