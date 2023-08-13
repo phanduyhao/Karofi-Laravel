@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ $title }}</title>
 <script src="https://www.youtube.com/iframe_api"></script>
-<link rel="shortcut icon" href="temp/images/bg-video.png" type="image/x-icon">
+<link rel="shortcut icon" href="temp/images/logo 2.png" type="image/x-icon">
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->

@@ -56,7 +56,6 @@
             e.stopPropagation();
         });
 
-
         // Kiểm tra dữ liệu đầu vào đã nhập hay chưa ?
         function validateForm(formID) {
             let checkValid = true;
@@ -84,14 +83,12 @@
             return checkValid;
         }
 
-
         // Check xem có đúng kiểu Email khi nhập vào không ?
         function isValidEmail(email) {
             // Basic email format validation using regular expression
             let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailPattern.test(email);
         }
-
 
         //    HIỂN THỊ COMMENT
         function appendNewComment(commentData, targetList) {
@@ -105,16 +102,10 @@
                 '</div>'+
                 '</div>'+
                 '<div class="reply">'+
-                '<p class="reply-text">'+
-                '<a href="" class="reply-text__link">' +
-                'Trả lời' + '<span class="id_user d-none">' + commentData.id+ '</span>'+
-                '</a>'+
-                '</p>'+
                 '</div>');
             // Thêm bình luận vào thể có class " comment-list "
             $(`.${targetList}`).prepend(newComment);
         }
-
 
         // Chức năng Bấm vào " Trả lời " thì hiển form bình luận
         $('.reply-text__link').on('click', function(event) {
@@ -127,7 +118,4 @@
             commentBox.removeClass('d-none');
         });
     });
-
-
-
 </script>

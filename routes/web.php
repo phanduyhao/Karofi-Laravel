@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\User\LoginContronller;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\admin\mainContronller;
 use App\Http\Controllers\Admin\SlidesController;
 use App\Http\Controllers\Admin\CatesController;
@@ -32,6 +33,7 @@ Route::post('admin/users/login/store', [LoginContronller::class,'store']);
 Route::middleware(['auth'])->group(function() {
     Route::get('/admin',[mainContronller::class,'index'])->name('admin');
     Route::prefix('admin')->group(function () {
+        Route::resource('users', UsersController::class);
         Route::resource('slides', SlidesController::class);
         Route::resource('cates', CatesController::class);
         Route::resource('posts', postsController::class);

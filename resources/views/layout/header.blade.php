@@ -56,7 +56,7 @@
                 </svg>
             </a>
             @if (Auth::check())
-                <a href="/admin/main" class="header-icon__item">
+                <a href="/admin" class="header-icon__item">
             @else
                 <a href="/login" class="header-icon__item">
             @endif
