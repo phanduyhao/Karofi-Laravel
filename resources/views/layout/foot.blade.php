@@ -7,6 +7,7 @@
 <script type="text/javascript" src="/temp/build/js/slide.min.js"></script>
 <script type="text/javascript" src="/temp/build/js/video.min.js"></script>
 <script>
+
     $(document).ready(function(){
         $('body form button[type="submit"]').on('click', function(e){
             e.preventDefault();

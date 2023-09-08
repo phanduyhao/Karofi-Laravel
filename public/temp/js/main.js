@@ -1,3 +1,27 @@
+// Header Mobile
+$('.header-icon .bar-actions.bar').click(function () {
+    if($('.header-icon__active').hasClass('d-none')){
+        $('.header-icon__active').removeClass('d-none')
+        $('.header-icon__active').addClass('d-flex')
+    }else{
+        $('.header-icon__active').removeClass('d-flex')
+        $('.header-icon__active').addClass('d-none')
+    }
+})
+var bar_mobile = $('.header-responsive .bar-actions.bar')
+var overlay_mobile = $('.layout-site .over-lay')
+var header_mobile = $('.header-nav.mobile')
+bar_mobile.click(function () {
+    overlay_mobile.css('right','0');
+    overlay_mobile.css('transition','.5s all');
+    header_mobile.css('transform','translateX(0)')
+})
+overlay_mobile.click(function () {
+    $(this).css('right','');
+    header_mobile.css('transform','translateX(-100%)')
+})
+
+// Main
 document.getElementById('backtotop').addEventListener('click', function() {
     // Cuộn lên đầu trang
     window.scrollTo({

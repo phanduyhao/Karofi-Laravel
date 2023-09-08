@@ -1,98 +1,3 @@
-// $(document).ready(function () {
-//     $('.video-contain').each(function () {
-//         var idVideoContain = $(this).attr('id');
-//         var players = {};
-//
-//         function onYouTubePlayerAPIReady() {
-//             destroyOldPlayers();
-//             initializePlayers();
-//         }
-//
-//         function destroyOldPlayers() {
-//             for (var playerId in players) {
-//                 if (players.hasOwnProperty(playerId)) {
-//                     players[playerId].destroy();
-//                 }
-//             }
-//             players = {}; // Reset the players object
-//         }
-//
-//         function initializePlayers() {
-//             $('#' + idVideoContain + ' .video-player').each(function () {
-//                 var videoId = $(this).attr('id');
-//                 var playerId = $(this).find('.player').attr('id');
-//
-//                 players[playerId] = new YT.Player(playerId, {
-//                     videoId: videoId,
-//                     playerVars: {
-//                         autoplay: 0,
-//                     },
-//                 });
-//
-//                 var playButton = $(this).find('.btn-youtube');
-//                 var backgroundImage = $(this).find('.bg-video');
-//
-//                 playButton.off('click');
-//
-//                 playButton.on('click', function () {
-//                     playButton.addClass('d-none');
-//                     backgroundImage.addClass('d-none');
-//                     players[playerId].playVideo();
-//                 });
-//             });
-//
-//             $('#' + idVideoContain + ' .list-video').off('click');
-//
-//             $('#' + idVideoContain + ' .list-video').on('click', function (event) {
-//                 event.preventDefault();
-//
-//                 var targetVideoId = $(this).attr('data-target');
-//
-//                 for (var id in players) {
-//                     if (id !== targetVideoId) {
-//                         players[id].stopVideo();
-//                     }
-//                 }
-//
-//                 $('#' + idVideoContain + ' .video-player .btn-youtube').removeClass('d-none').addClass('d-block');
-//                 $('#' + idVideoContain + ' .video-player .bg-video').removeClass('d-none').addClass('d-block');
-//
-//                 $('#' + idVideoContain + ' .video-player').addClass('d-none');
-//                 $('#' + targetVideoId).removeClass('d-none');
-//
-//                 $('#' + idVideoContain + ' .list-video').removeClass('active');
-//                 $(this).addClass('active');
-//             });
-//         }
-//
-//         function stopCurrentVideo() {
-//             for (var id in players) {
-//                 players[id].stopVideo();
-//             }
-//         }
-//
-//         initializePlayers();
-//
-//         // Xử lý sự kiện chuyển tab
-//         $(".main-content__cate .cate-child__item").click(function () {
-//             stopCurrentVideo();
-//             var cateID = $(this).closest('.main-content__cate').attr('id'); // Lấy ID của phần tử cha gần nhất có class main-content__cate
-//             var itemId = $(this).attr("id");
-//             // VIDEO
-//             $("#" + cateID + " .video-contain").addClass("d-none");
-//             $("#" + cateID + " .video-contain").removeClass("d-flex");
-//             // Hiển thị swiper-content tương ứng với tab được click
-//             $("#" + itemId + ".video-contain").removeClass("d-none");
-//             $("#" + itemId + ".video-contain").addClass("d-flex");
-//         });
-//     });
-// });
-
-
-//
-
-
-
 $(document).ready(function () {
     $('.video-contain').each(function () {
         var idVideoContain = $(this).attr('id');
@@ -102,7 +7,6 @@ $(document).ready(function () {
             destroyOldPlayers();
             initializePlayers();
         }
-
         function destroyOldPlayers() {
             for (var playerId in players) {
                 if (players.hasOwnProperty(playerId)) {
@@ -111,7 +15,6 @@ $(document).ready(function () {
             }
             players = {}; // Reset the players object
         }
-
         function initializePlayers() {
             $('#' + idVideoContain + ' .video-player').each(function () {
                 var videoId = $(this).attr('id');
@@ -123,7 +26,6 @@ $(document).ready(function () {
                         autoplay: 0,
                     },
                 });
-
                 var playButton = $(this).find('.btn-youtube');
                 var backgroundImage = $(this).find('.bg-video');
 
@@ -135,14 +37,10 @@ $(document).ready(function () {
                     players[playerId].playVideo();
                 });
             });
-
             $('#' + idVideoContain + ' .list-video').off('click');
-
             $('#' + idVideoContain + ' .list-video').on('click', function (event) {
                 event.preventDefault();
-
                 var targetVideoId = $(this).attr('data-target');
-
                 for (var id in players) {
                     if (id !== targetVideoId) {
                         players[id].stopVideo();
@@ -150,7 +48,6 @@ $(document).ready(function () {
                         $('#' + id + ' .bg-video').removeClass('d-none').addClass('d-block');
                     }
                 }
-
                 $('#' + idVideoContain + ' .video-player').addClass('d-none');
                 $('#' + targetVideoId).removeClass('d-none');
 
@@ -162,7 +59,6 @@ $(document).ready(function () {
                 $('.btn-youtube').addClass('d-block').removeClass('d-none');
             });
         }
-
         function stopAllVideos() {
             for (var id in players) {
                 players[id].stopVideo();
@@ -170,9 +66,7 @@ $(document).ready(function () {
                 $('#' + id + ' .bg-video').removeClass('d-none').addClass('d-block');
             }
         }
-
         initializePlayers();
-
         // Xử lý sự kiện chuyển tab
         $(".main-content__cate .cate-child__item").click(function () {
             stopAllVideos();
@@ -187,8 +81,6 @@ $(document).ready(function () {
             // Hiển thị swiper-content tương ứng với tab được click
             $("#" + itemId + ".video-contain").removeClass("d-none");
             $("#" + itemId + ".video-contain").addClass("d-flex");
-
-
         });
     });
 });

@@ -2,6 +2,7 @@
 @import 'components/header.scss';
 @import 'components/mixin.scss';
 @import 'components/fonts.scss';
+@import 'components/responsive.scss';
 
 * {
     margin: 0;
@@ -64,6 +65,9 @@ img{
 .padding-0{
     @include padding(0) ;
 }
+.m-0{
+    margin: 0;
+}
 
 ul,
 li {
@@ -96,6 +100,9 @@ li {
 .position-fixed{
     position: fixed;
 }
+.position-sticky{
+    position: sticky;
+}
 .text-center{
     text-align: center;
 }
@@ -114,6 +121,8 @@ li {
 .mx-auto{
     margin: 0 auto;
 }
+
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -147,16 +156,13 @@ input[type="number"]::-webkit-outer-spin-button {
                 color: white;
             }
             z-index: 1;
-            top: 21%;
             left: 14%;
             &-item{
-                font-size: 18px;
                 font-weight: 700;
                 line-height:1.15em ;
                 padding: 10px 15px 7px;
                 border-radius: 20px;
                 background: #FFFFFF80;
-                margin-bottom: 20px;
                 letter-spacing: 0.5px;
                 transition: .3s all;
                 &:hover{
@@ -174,13 +180,8 @@ input[type="number"]::-webkit-outer-spin-button {
             }
         }
         .support{
-            right: 14%;
-            z-index: 1;
-            top: 50%;
+            z-index: 999;
             transform: translateY(-50%);
-            &-item{
-                &:hover{}
-            }
             &-item{
                 margin-bottom: 7px;
             }
@@ -205,7 +206,6 @@ input[type="number"]::-webkit-outer-spin-button {
                 &__item{
                     padding-bottom: 3px;
                     font-size: 18px;
-                    margin: 0 35px;
                     border-bottom: 2px solid transparent;
                     transition: .3s all;
                     &:hover{
@@ -219,7 +219,7 @@ input[type="number"]::-webkit-outer-spin-button {
             }
             .cate-news{
                 margin-top: 50px;
-                padding-bottom: 73px;
+                padding-bottom: 50px;
                 &__content{
                     padding: 15px 20px 35px 25px;
                 }
@@ -281,7 +281,7 @@ input[type="number"]::-webkit-outer-spin-button {
                 .title{
                     font-size: 18px;
                     color: black;
-                    text-wrap: nowrap;
+                    white-space: nowrap;
                     transition: .3s all;
                     font-family: 'Averta';
 
@@ -557,10 +557,6 @@ input[type="number"]::-webkit-outer-spin-button {
                             display: flex;
                             align-items: center;
                             input{
-                                top: 0;
-                                bottom: 0;
-                                left: 0;
-                                right: 0;
                                 padding-left: 58px;
                                 padding-right: 15px;
                                 font-size: 16px;
@@ -629,10 +625,6 @@ input[type="number"]::-webkit-outer-spin-button {
                     height: 50px;
                     align-items: center;
                     input{
-                        top: 0;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
                         border: 1px solid $secondary-color;
                         border-radius: 55px;
                         padding-left: 70px;
@@ -655,6 +647,7 @@ input[type="number"]::-webkit-outer-spin-button {
                         }
                     }
                     &__item{
+                        background: white;
                         height: 40px;
                         padding: 0 10px;
                         border: 1px solid $secondary-color;

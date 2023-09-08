@@ -7,24 +7,24 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('cates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_comment_id')->nullable();
-            $table->string('user_name');
-            $table->string('user_email');
-            $table->text('comment_content');
-            $table->timestamps();
-            // Set foreign key relationship to the parent comment
-            $table->foreign('parent_comment_id')
+            $table->string('title',255);
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')
                 ->references('id')
-                ->on('comments')
+                ->on('cates')
                 ->onDelete('cascade');
+            $table->string('alias',255)->unique()->nullable();
+            $table->string('short_desc',255)->nullable();
+            $table->binary('active')->nullable();
+            $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('cates');
     }
 }
 ;

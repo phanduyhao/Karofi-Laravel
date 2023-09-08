@@ -13,12 +13,34 @@ label {
   font-size: 16px;
   margin-bottom: 10px; }
 
+.layout-site .over-lay {
+  z-index: 997;
+  top: 0;
+  background: #0000005e;
+  bottom: 0;
+  left: 0;
+  transition: .5s all; }
+.layout-site .logo-contain {
+  margin-bottom: 15px; }
+.layout-site .header-nav.mobile {
+  z-index: 999;
+  background: white;
+  top: 0;
+  bottom: 0;
+  padding: 70px 20px;
+  transform: translateX(-100%);
+  transition: .3s all; }
+
 .header {
   padding: 23px 0; }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
   .header-logo {
     margin-right: 10px; }
   .header-nav {
-    text-wrap: nowrap; }
+    white-space: nowrap; }
     .header-nav__item {
       background-image: url("../../../storage/app/public/images/slides/slide-header-2.jpg");
       font-weight: 700;

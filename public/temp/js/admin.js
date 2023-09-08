@@ -53,7 +53,6 @@ function updateFileInput() {
     }
 }
 
-
 // tạo Alias tự động
 document.addEventListener('DOMContentLoaded', function() {
     var titleInput = document.getElementById('title');

@@ -14,14 +14,19 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function home(){
-        $slides = slides::all();
-        $cates = cates::all();
-        $posts = posts::all();
-        $banners = banners::all();
+        $slide = slides::where('active', 1)->where('title', 'Slide header')->get();
+        $cates = cates::where('parent_id', null)->get();
+        foreach ($cates as $cate) {
+            $cate->children = cates::where('parent_id', $cate->id)->get();
+            $cate->banners = banners::where('cate_id', $cate->id)->get();
+            foreach ($cate->children as $child) {
+                $child->posts = posts::where('cate_id', $child->id)->where('active',1)->get();
+                $child->videos = videos::where('cate_id', $child->id)->where('active',1)->get();
+            }
+        }
         $locations = locations::all();
-        $videos = videos::all();
         $comments = comments::all();
-        return view('home',compact('slides','cates','posts','locations','banners','videos','comments'),[
+        return view('home',compact('slide','cates','locations','comments'),[
             'title' => 'Trang chủ'
         ]);
     }
